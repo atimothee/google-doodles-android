@@ -1,4 +1,4 @@
-package io.github.atimothee.doodles.io.github.atimothee.doodles.datasync;
+package io.github.atimothee.doodles.datasync;
 
 import android.accounts.AbstractAccountAuthenticator;
 import android.accounts.Account;

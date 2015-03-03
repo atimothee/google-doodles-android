@@ -1,0 +1,13 @@
+{
+    "syntaxVersion": 3,
+    "projectPackageId": "io.github.atimothee.doodles",
+    "authority": "io.github.atimothee.doodles.provider",
+    "providerJavaPackage": "io.github.atimothee.doodles.provider",
+    "providerClassName": "DoodlesProvider",
+    "sqliteOpenHelperClassName": "DoodlesSQLiteOpenHelper",
+    "sqliteOpenHelperCallbacksClassName": "DoodlesSQLiteOpenHelperCallbacks",
+    "databaseFileName": "doodles.db",
+    "databaseVersion": 1,
+    "enableForeignKeys": true,
+    "useAnnotations": true,
+}

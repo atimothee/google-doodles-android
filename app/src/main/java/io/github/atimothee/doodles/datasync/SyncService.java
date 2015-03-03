@@ -1,4 +1,4 @@
-package io.github.atimothee.doodles.io.github.atimothee.doodles.datasync;
+package io.github.atimothee.doodles.datasync;
 
 /**
  * Created by Timo on 3/3/15.

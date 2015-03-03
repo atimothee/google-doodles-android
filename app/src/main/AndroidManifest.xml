@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name="io.github.atimothee.doodles.datasync.AuthenticatorService">
+            android:name=".datasync.AuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
@@ -34,7 +34,7 @@
                 android:resource="@xml/authenticator" />
         </service>
         <service
-            android:name="io.github.atimothee.doodles.datasync.SyncService"
+            android:name=".datasync.SyncService"
             android:exported="true"
             android:process=":sync">
             <intent-filter>
@@ -44,7 +44,7 @@
                 android:resource="@xml/syncadapter" />
         </service>
         <provider
-            android:name="io.github.atimothee.doodles.provider.Provider"
+            android:name="io.github.atimothee.doodles.provider.DoodlesProvider"
             android:authorities="io.github.atimothee.doodles.provider"
             android:exported="false"
             android:syncable="true"/>

@@ -1,0 +1,26 @@
+{
+    "documentation": "A Google Doodle (Image that appears on Google home page)",
+    "fields": [
+        {
+            "name": "name",
+            "type": "String",
+        },
+        {
+            "name": "title",
+            "type": "String",
+        },
+        {
+            "name": "url",
+            "type": "String",
+        },
+        {
+            "name": "high_res_url",
+            "type": "String",
+            "nullable": true
+        },
+        {
+            "name": "run_date",
+            "type": "Date",
+        }
+        ]
+}
