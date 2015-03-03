@@ -4,5 +4,7 @@
     <string name="app_name">Doodles</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="content_authority">io.github.atimothee.doodles.provider</string>
+    <string name="account_type">io.github.atimothee.doodles.datasync</string>
 
 </resources>
