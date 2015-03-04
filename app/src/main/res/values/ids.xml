@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="button" type="id"></item>
+    <item name="textView" type="id"></item>
+    <item name="scrollView" type="id"></item>
+
+</resources>

@@ -10,6 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -48,10 +53,12 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements DoodleRequestListener {
+        TextView textView;
 
         public PlaceholderFragment() {
         }
@@ -60,7 +67,27 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            textView = (TextView) rootView.findViewById(R.id.textView);
+            // adding action to the get doodle info button
+            rootView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String year = "" + Calendar.getInstance().get(Calendar.YEAR);//get the current  year from system date
+                    String month = "" + Calendar.getInstance().get(Calendar.MONTH);// get current month from system date
+                    new DoodleInfo(PlaceholderFragment.this, year, month).execute();// call the doodle info class to make request to the server to fetch json string from google doodle page
+                }
+            });
             return rootView;
+        }
+
+        @Override
+        public void onSuccess(String JsonString) {
+            textView.setText(JsonString);// when request to the server is successfull, it output a jsonstring.
+        }
+
+        @Override
+        public void onFailed() {
+            Toast.makeText(getActivity(), "Failed", Toast.LENGTH_LONG).show();// display a toast in case of failure
         }
     }
 }
