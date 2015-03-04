@@ -12,6 +12,13 @@ import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
 
+import java.util.List;
+
+import io.github.atimothee.doodles.provider.doodle.DoodleModel;
+import retrofit.RestAdapter;
+import retrofit.http.GET;
+import retrofit.http.Path;
+
 /**
  * Handle the transfer of data between a server and an
  * app, using the Android sync adapter framework.
@@ -52,6 +59,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("https://api.github.com")
+                .build();
 
+        DoodleService doodleService = restAdapter.create(DoodleService.class);
+        //List<DoodleModel> doodles = doodleService.listDoodles();
     }
 }
