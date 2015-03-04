@@ -10,6 +10,6 @@ import retrofit.http.Path;
  * Created by Timo on 3/3/15.
  */
 public interface DoodleService {
-    @GET("/doodles/{year}/{month}")
-    List<DoodleModel> listDoodles(@Path("year") Integer year, @Path("month") Integer month);
+    @GET("/doodles/json/{year}/{month}")
+    List<Doodle> listDoodles(@Path("year") Integer year, @Path("month") Integer month);
 }

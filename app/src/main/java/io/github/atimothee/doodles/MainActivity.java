@@ -1,5 +1,6 @@
 package io.github.atimothee.doodles;
 
+import android.content.ContentResolver;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import io.github.atimothee.doodles.helpers.AccountHelper;
+import io.github.atimothee.doodles.provider.DoodlesProvider;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -28,6 +32,21 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+    }
+
+    private void sync(){
+        // Pass the settings flags by inserting them in a bundle
+        Bundle settingsBundle = new Bundle();
+        settingsBundle.putBoolean(
+                ContentResolver.SYNC_EXTRAS_MANUAL, true);
+        settingsBundle.putBoolean(
+                ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
+        /*
+         * Request the sync for the default account, authority, and
+         * manual sync settings
+         */
+        AccountHelper accountHelper = new AccountHelper(this);
+        ContentResolver.requestSync(accountHelper.CreateSyncAccount(), DoodlesProvider.AUTHORITY, settingsBundle);
     }
 
 
@@ -47,6 +66,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            sync();
             return true;
         }
 
