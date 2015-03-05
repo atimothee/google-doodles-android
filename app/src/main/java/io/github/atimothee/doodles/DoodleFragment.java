@@ -97,6 +97,7 @@ public class DoodleFragment extends Fragment implements AbsListView.OnItemClickL
 
                 if(view.getId()==R.id.image_doodle_thumbnail){
                     Picasso.with(getActivity()).load("http:"+cursor.getString(cursor.getColumnIndex(DoodleColumns.URL))).into((ImageView)view);
+                    return true;
                 }
                 return false;
             }
