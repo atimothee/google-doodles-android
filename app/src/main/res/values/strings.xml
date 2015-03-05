@@ -8,5 +8,7 @@
     <string name="account_type">io.github.atimothee.doodles.datasync</string>
     <string name="account">Google Doodles</string>
     <string name="button">Get Doodle Json</string>
+    <string name="key_year">year</string>
+    <string name="key_month">month</string>
 
 </resources>

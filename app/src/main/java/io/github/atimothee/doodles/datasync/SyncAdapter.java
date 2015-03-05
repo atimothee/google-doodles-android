@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.github.atimothee.doodles.R;
 import io.github.atimothee.doodles.provider.DoodlesProvider;
 import io.github.atimothee.doodles.provider.doodle.DoodleColumns;
 import io.github.atimothee.doodles.provider.doodle.DoodleContentValues;
@@ -73,7 +74,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                 .build();
 
         DoodleService doodleService = restAdapter.create(DoodleService.class);
-        List<Doodle> doodles = doodleService.listDoodles(2015, 2);
+        List<Doodle> doodles = doodleService.listDoodles(extras.getInt(getContext().getString(R.string.key_year)), extras.getInt(getContext().getString(R.string.key_month)));
         List<ContentValues> contentValuesList = new ArrayList<>();
         ContentValues contentValues;
         for(Doodle d: doodles){

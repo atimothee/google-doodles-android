@@ -21,7 +21,7 @@ import io.github.atimothee.doodles.helpers.AccountHelper;
 import io.github.atimothee.doodles.provider.DoodlesProvider;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements DoodleFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +29,20 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new DoodleFragment())
                     .commit();
         }
     }
 
-    private void sync(){
+    private void sync(int year, int month){
         // Pass the settings flags by inserting them in a bundle
         Bundle settingsBundle = new Bundle();
         settingsBundle.putBoolean(
                 ContentResolver.SYNC_EXTRAS_MANUAL, true);
         settingsBundle.putBoolean(
                 ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
+        settingsBundle.putInt(getString(R.string.key_year), year);
+        settingsBundle.putInt(getString(R.string.key_month), month);
         /*
          * Request the sync for the default account, authority, and
          * manual sync settings
@@ -66,11 +68,15 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            sync();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
     }
 
 
