@@ -10,5 +10,8 @@
     <string name="button">Get Doodle Json</string>
     <string name="key_year">year</string>
     <string name="key_month">month</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="key_id">id</string>
 
 </resources>

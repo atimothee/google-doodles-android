@@ -1,6 +1,7 @@
 package io.github.atimothee.doodles;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,12 @@ import io.github.atimothee.doodles.provider.DoodlesProvider;
 
 
 public class MainActivity extends ActionBarActivity implements DoodleFragment.OnFragmentInteractionListener{
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sync(2015, 3);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +82,10 @@ public class MainActivity extends ActionBarActivity implements DoodleFragment.On
     }
 
     @Override
-    public void onFragmentInteraction(String id) {
-
+    public void onFragmentInteraction(Long id) {
+        Intent i = new Intent(this, DetailActivity.class);
+        i.putExtra(getString(R.string.key_id), id);
+        startActivity(i);
     }
 
 
